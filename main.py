@@ -2,7 +2,6 @@ import pygame
 from objects import Button, Bar
 import random
 
-
 # Creating colours
 BLUE = (0, 0, 255)
 RED = (255, 0, 0)

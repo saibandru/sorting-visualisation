@@ -11,7 +11,6 @@ for event in pygame.event.get():
     if event.type == pygame.QUIT:
         running = False
 
-
 class Button():
     def __init__(self, screen, pos_x, pos_y, default, hover, height = 286, width = 73):
         self.pos_x = pos_x
@@ -51,7 +50,7 @@ class Bar():
 
 # Sorting Algorithms
 def bubble():
-    
+    pass    
 
 def insert():
     pass
