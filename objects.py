@@ -12,7 +12,7 @@ for event in pygame.event.get():
         running = False
 
 class Button():
-    def __init__(self, screen, pos_x, pos_y, default, hover, height = 286, width = 73):
+    def __init__(self, screen, pos_x, pos_y, default, hover, height=286, width=73):
         self.pos_x = pos_x
         self.pos_y = pos_y
         self.height = height
@@ -20,8 +20,6 @@ class Button():
         self.default = default
         self.hover = hover
         self.screen = screen
-        
-
 
     def mouse_hover(self):
         x, y = pygame.mouse.get_pos()
@@ -29,13 +27,11 @@ class Button():
             self.img = pygame.image.load(self.hover)
             self.screen.blit(self.img, (self.pos_x, self.pos_y))
             return True
-        else:
-            return False
+        return False
 
     def load(self):
         self.img = pygame.image.load(self.default)
         self.screen.blit(self.img, (self.pos_x, self.pos_y))
-
 
 class Bar():
     def __init__(self, width, height, pos_x, pos_y, screen):
@@ -50,7 +46,7 @@ class Bar():
 
 # Sorting Algorithms
 def bubble():
-    pass    
+    pass
 
 def insert():
     pass
@@ -63,7 +59,3 @@ def shell():
 
 def selection():
     pass
-        
-
-
-        
