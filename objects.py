@@ -11,7 +11,9 @@ for event in pygame.event.get():
     if event.type == pygame.QUIT:
         running = False
 
-class Button():
+
+# noinspection PyAttributeOutsideInit
+class Button:
     def __init__(self, screen, pos_x, pos_y, default, hover, height=286, width=73):
         self.pos_x = pos_x
         self.pos_y = pos_y
@@ -30,10 +32,12 @@ class Button():
         return False
 
     def load(self):
+        # noinspection PyAttributeOutsideInit
         self.img = pygame.image.load(self.default)
         self.screen.blit(self.img, (self.pos_x, self.pos_y))
 
-class Bar():
+
+class Bar:
     def __init__(self, width, height, pos_x, pos_y, screen):
         self.width = width
         self.height = height
@@ -44,18 +48,23 @@ class Bar():
     def load(self):
         pygame.draw.rect(self.screen, WHITE, (self.pos_x, self.pos_y, self.width, self.height))
 
+
 # Sorting Algorithms
 def bubble():
     pass
 
+
 def insert():
     pass
+
 
 def merge():
     pass
 
+
 def shell():
     pass
+
 
 def selection():
     pass

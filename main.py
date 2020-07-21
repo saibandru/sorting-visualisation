@@ -22,6 +22,7 @@ icon = pygame.image.load("./art/bar-chart-icon.jpg")
 font = pygame.font.SysFont("Oxygen", 35)
 pygame.display.set_icon(icon)
 
+
 # Function for multiline
 def blit_text(text, pos, font=font, color=WHITE, surface=screen):
     # 2D array where each row is a list of words.
@@ -42,37 +43,42 @@ def blit_text(text, pos, font=font, color=WHITE, surface=screen):
         x = pos[0]  # Reset the x.
         y += word_height  # Start on new row.
 
+
 # Bubble Sort
 bub_sort_x = 84
 bub_sort_y = 119
-bubble_sort = Button(screen, bub_sort_x, bub_sort_y, "./art/Bubble Sort Btn.png", "./art/Bubble Sort Btn (Hover State).png")
+bubble_sort = Button(screen, bub_sort_x, bub_sort_y, "./art/Bubble Sort Btn.png",
+                     "./art/Bubble Sort Btn (Hover State).png")
 
 # Insertion Sort
 ins_sort_x = 84
 ins_sort_y = 204
-insert_sort = Button(screen, ins_sort_x, ins_sort_y, "./art/Insert Sort Btn (Insert Sort Btn).png", "./art/Insert Sort Btn.png")
+insert_sort = Button(screen, ins_sort_x, ins_sort_y, "./art/Insert Sort Btn (Insert Sort Btn).png",
+                     "./art/Insert Sort Btn.png")
 
 # Merge Sort
 mer_sort_x = 84
 mer_sort_y = 289
-merge_sort = Button(screen, mer_sort_x, mer_sort_y, "./art/Merge Sort Btn.png", "./art/Merge Sort Btn (Hover State).png")
+merge_sort = Button(screen, mer_sort_x, mer_sort_y, "./art/Merge Sort Btn.png",
+                    "./art/Merge Sort Btn (Hover State).png")
 
 # Shell Sort
 she_sort_x = 84
 she_sort_y = 374
-shell_sort = Button(screen, she_sort_x, she_sort_y, "./art/Shell Sort Btn.png", "./art/Shell Sort Btn (Hover State).png")
+shell_sort = Button(screen, she_sort_x, she_sort_y, "./art/Shell Sort Btn.png",
+                    "./art/Shell Sort Btn (Hover State).png")
 
 # Selection Sort
 sel_sort_x = 84
 sel_sort_y = 459
-selection_sort = Button(screen, sel_sort_x, sel_sort_y, "./art/Selection Sort Btn.png", "./art/Selection Sort Btn (Hover State).png")
-
+selection_sort = Button(screen, sel_sort_x, sel_sort_y, "./art/Selection Sort Btn.png",
+                        "./art/Selection Sort Btn (Hover State).png")
 
 # Starting the game loop
 loop1 = True
 loop2 = True
 
-while loop1: 
+while loop1:
     # Background
     screen.fill(BACKGROUND)
     img = pygame.image.load("./art/Rectangle 10.png")
@@ -85,7 +91,7 @@ while loop1:
     # List of Buttons
     buttons_list = [bubble_sort, insert_sort, merge_sort, shell_sort, selection_sort]
     sort_description = {
-        bubble_sort: "Bubble Sort (or Sinking Sort) is the simplest sorting algorithm. It traverses through a list, swapping adjacent elements if they are in the wrong order. It has a Big \'O\' complexity of O(n^2)", 
+        bubble_sort: "Bubble Sort (or Sinking Sort) is the simplest sorting algorithm. It traverses through a list, swapping adjacent elements if they are in the wrong order. It has a Big \'O\' complexity of O(n^2)",
         insert_sort: "The Insert(ion) Sort algorithm traverses through a list, slotting the number into a spot where the number before it is smaller and the number after, greater. It has a Big \'O\' complexity of O(n^2)",
         merge_sort: "Merge Sort is a an algorithm that splits up a list of number into individual numbers before comparing and combining these individual numbers together. It has a Big \'O\' complexity of O(n log(n))",
         shell_sort: "The Shell Sort algorithm takes a number and compares it with another number in a list and switches them accordingly. It can be visualised as a mix of Bubble and Insert Sort. It has a Big \'O\' complexity of O(n (log(n))^2)",
@@ -107,7 +113,7 @@ while loop1:
             loop2 = False
         elif event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
             for button in buttons_list:
-                if button.mouse_hover() == True:
+                if button.mouse_hover():
                     loop1 = False
 
     pygame.display.update()
