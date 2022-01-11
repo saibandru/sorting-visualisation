@@ -1,5 +1,5 @@
 import pygame
-from objects import Button, Bar
+from objects import *
 import random
 
 # Creating colours
@@ -89,7 +89,7 @@ while loop1:
     screen.blit(img_2, (400, 125))
 
     # List of Buttons
-    buttons_list = [bubble_sort, insert_sort, merge_sort, shell_sort, selection_sort]
+    buttons_list = {bubble_sort: "bubble", insert_sort: "insert", merge_sort: "merge", shell_sort: "shell", selection_sort: "selection"}
     sort_description = {
         bubble_sort: "Bubble Sort (or Sinking Sort) is the simplest sorting algorithm. It traverses through a list, swapping adjacent elements if they are in the wrong order. It has a Big \'O\' complexity of O(n^2)",
         insert_sort: "The Insert(ion) Sort algorithm traverses through a list, slotting the number into a spot where the number before it is smaller and the number after, greater. It has a Big \'O\' complexity of O(n^2)",
@@ -114,15 +114,17 @@ while loop1:
         elif event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
             for button in buttons_list:
                 if button.mouse_hover():
+                    sort_type = buttons_list[button]
                     loop1 = False
 
     pygame.display.update()
 
 bars = []
 for i in range(10):
-    bars.append([random.randrange(10, 300), 20])
+    width = random.randrange(10, 700)
+    bars.append(width)
 
-print(bars)
+
 
 while loop2:
     screen.fill(BACKGROUND)
@@ -132,8 +134,19 @@ while loop2:
             loop2 = False
     pos_y = 50
     for bar in bars:
-        x = Bar(bar[0], bar[1], 50, pos_y, screen)
+        x = Bar(bar, 20, 50, pos_y, screen)
         pos_y += 50
         x.load()
 
     pygame.display.update()
+
+    if sort_type == "bubble":
+        bubble(bars)
+    elif sort_type == "insert":
+        insert(bars)
+    elif sort_type == "merge":
+        merge(bars)
+    elif sort_type == "shell":
+        shell(bars)
+    elif sort_type == "selection":
+        selection(bars)
