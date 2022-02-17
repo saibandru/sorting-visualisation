@@ -77,6 +77,7 @@ selection_sort = Button(screen, sel_sort_x, sel_sort_y, "./art/Selection Sort Bt
 # Starting the game loop
 loop1 = True
 loop2 = True
+loop3 = True
 
 while loop1:
     # Background
@@ -120,10 +121,12 @@ while loop1:
     pygame.display.update()
 
 bars = []
+sorted_bars = []
 for i in range(10):
     width = random.randrange(10, 700)
     bars.append(width)
-
+    sorted_bars.append(width)
+sorted_bars.sort()
 
 
 while loop2:
@@ -137,7 +140,6 @@ while loop2:
         x = Bar(bar, 20, 50, pos_y, screen)
         pos_y += 50
         x.load()
-
     pygame.display.update()
 
     if sort_type == "bubble":
@@ -150,3 +152,16 @@ while loop2:
         shell(bars)
     elif sort_type == "selection":
         selection(bars)
+    if bars == sorted_bars:
+        screen.fill(BACKGROUND)
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                loop3 = False
+        pos_y = 50
+        for bar in bars:
+            x = Bar(bar, 20, 50, pos_y, screen)
+            pos_y += 50
+            x.load()
+        pygame.display.update()
+        pygame.time.wait(5000)
+        break

@@ -86,14 +86,71 @@ def insert(bars):
         pygame.display.update()
         pygame.time.wait(300)
 
+def merge(bars):
+    if len(bars) > 1:
+        left_bars = bars[:len(bars)//2]
+        right_bars = bars[len(bars)//2:]
+        merge(left_bars)
+        merge(right_bars)
 
-def merge():
-    pass
+        element_final = 0
+        element_left = 0
+        element_right = 0
+        while element_left < len(left_bars) and element_right < len(right_bars):
+            if left_bars[element_left] < right_bars[element_right]:
+                bars[element_final] = left_bars[element_left]
+                element_left += 1 
+            else:
+                bars[element_final] = right_bars[element_right]
+                element_right += 1
+            element_final += 1
+ 
+        while element_left < len(left_bars):
+            bars[element_final] = left_bars[element_left]
+            element_left += 1
+            element_final += 1
 
+        while element_right < len(right_bars):
+            bars[element_final] = right_bars[element_right]
+            element_right += 1
+            element_final += 1
+        screen.fill(BACKGROUND)
+        pos_y = 50
+        for bar in bars:
+            x = Bar(bar, 20, 50, pos_y, screen)
+            pos_y += 50
+            x.load()
+        pygame.display.update()
+        pygame.time.wait(300)
 
-def shell():
-    pass
-
+def shell(bars):
+    lenbars = len(bars)
+    interval = len(bars) // 2
+    while interval > 0:
+        for first_num in range(interval, lenbars):
+            temp = bars[first_num]
+            second_num = first_num
+            while second_num >= interval and bars[second_num - interval] > temp:
+                bars[second_num] = bars[second_num - interval]
+                second_num -= interval
+                screen.fill(BACKGROUND)
+                pos_y = 50
+                for bar in bars:
+                    x = Bar(bar, 20, 50, pos_y, screen)
+                    pos_y += 50
+                    x.load()
+                pygame.display.update()
+                pygame.time.wait(500)   
+            bars[second_num] = temp
+        interval //= 2
+        screen.fill(BACKGROUND)
+        pos_y = 50
+        for bar in bars:
+            x = Bar(bar, 20, 50, pos_y, screen)
+            pos_y += 50
+            x.load()
+        pygame.display.update()
+        pygame.time.wait(500)
 
 def selection():
     pass
