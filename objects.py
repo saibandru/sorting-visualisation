@@ -152,5 +152,19 @@ def shell(bars):
         pygame.display.update()
         pygame.time.wait(500)
 
-def selection():
-    pass
+def selection(bars):
+    for i in range(len(bars)):
+        minimum_index = i
+        for j in range(i+1, len(bars)):
+            if bars[j] < bars[minimum_index]:
+                minimum_index = j
+
+        bars[minimum_index], bars[i] = bars[i], bars[minimum_index]
+        screen.fill(BACKGROUND)
+        pos_y = 50
+        for bar in bars:
+            x = Bar(bar, 20, 50, pos_y, screen)
+            pos_y += 50
+            x.load()
+        pygame.display.update()
+        pygame.time.wait(200)
